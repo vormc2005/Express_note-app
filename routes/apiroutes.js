@@ -13,21 +13,26 @@ module.exports = function (app) {
 /**Code for reading db.json file here */
     app.get("/api/notes", function (req, res) {
         res.json(db);
+       
     });
 
-//Posting a new note to  the object
+//Landing on Notes page and Posting a new note to  the object
     app.post("/api/notes", function (req, res) {
 
         
         let moreNotes = new store(req.body.title, req.body.text);
+
         db.push(moreNotes);
         console.log(moreNotes)
 
         fs.writeFile("./db/db.json", JSON.stringify(db), function (err) {
             if (err) throw err;
             console.log('Data written')
+            res.json(db);
         })
     })
+
+
 
     app.delete("/api/notes/:id", function (req, res) {
 
@@ -50,10 +55,11 @@ module.exports = function (app) {
         fs.writeFile("./db/db.json", JSON.stringify(deletedObj), function (err) {
             if (err) throw err;
             console.log('Data written')
+            res.json(db);
+            // res.json(deletedObj)
         })
 
-        res.json(deletedObj)
-
+        
     })
 
 
