@@ -12,8 +12,8 @@ app.use(express.static(__dirname + '/public'));
 
 
 //API and HTML routs
-require("./routes/apiroutes")(app);
-require("./routes/htmlroutes")(app);
+require("./routes/apiroutes.js")(app);
+require("./routes/htmlroutes.js")(app);
 
 
 
