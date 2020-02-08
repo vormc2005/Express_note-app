@@ -3,13 +3,14 @@
 
 
 // need to create object to store data
-   
+ 
+
 
 class store {
     
 
     constructor(title, text){
-
+       
     
 
         this.id = Math.floor(Math.random()*(100-1)+1)
